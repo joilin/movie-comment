@@ -1,0 +1,34 @@
+<!--pages/edit-comment/edit-comment.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view wx:if="{{!userInfo}}">
+    <view class="unlogin-card">
+        <view class="unlogin-head"></view>
+        <view class="unlogin-info">
+            <view class="unlogin-text">未登录</view>
+            <view class="unlogin-tips">点击微信登录后可添加影评</view>
+        </view>
+    </view>
+    <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+<view class='editComment' wx:else>
+<view class='comment-card' >
+    <image class='movie-image' src='{{movie.image}}'></image>
+    <view class='movie-name'>{{movie.title}}</view>
+    <view class='comment-info'> 
+        <textarea class='comment-txt' name='txtComment' type='text' maxlength='-1' show-confirm-bar='true' auto-height  auto-focus='true' placeholder="{{comment.txtComment ? '' : '请输入您的评价内容...'}}"
+    bindinput='commentInput' wx:if="{{comment.commentType==='文字'}}">{{comment.txtComment}}</textarea>       
+        
+        <view class='comment-audio' bindtouchstart="startTape" bindtouchend="endTape"  wx:else>           
+            <image class='play-icon' src='/images/tape.png'></image>
+            <view class='play-text'>录音</view>
+            
+        </view>
+    </view>
+</view>
+<view class='btn-area'>
+    <view class='navigator-btn' bindtap='onTapCard'>
+        <view class='navigator-text'>完成</view>
+    </view>
+</view>
+</view>
+

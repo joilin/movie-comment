@@ -1,0 +1,30 @@
+<!--pages/preview-comment/preview-comment.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view class='comment-card'>
+    <image class='movie-image' src='{{movie.image}}'></image>
+    <view class='comment-info'>
+        <view class='movie-name'>{{movie.title}}</view>
+        <view class='comment-user'>
+            <image class='comment-avatar' src='{{userInfo.avatarUrl}}'></image>
+            <view class='comment-usename'>{{userInfo.nickName}}</view>
+        </view>
+        <view class='comment-content'>
+            <scroll-view class='txt-content' scroll-y="true" wx:if="{{comment.commentType==='文字'}}">{{comment.txtComment}}</scroll-view>
+            <view class='audio-content' bindtap='playRecord' type='primary' wx:if="{{comment.commentType==='音频'}}">
+                <image class='play-icon' src='/images/play.png'></image>
+                <view class='play-time'>{{comment.times}}s</view>
+            </view>
+        </view>
+    </view>
+    <view class='btn-area'>
+        <navigator class='navigator-btn' url='/pages/edit-comment/edit-comment?from=preview&id={{movie.id}}&title={{movie.title}}&image={{movie.image}}&commenttype={{comment.commentType}}&content={{comment.txtComment}}'>
+            <image class='navigator-image' src='/images/return.png'></image>
+            <view class='navigator-text'>重新编辑</view>
+        </navigator>
+        <view class='navigator-btn'>
+            <image class='navigator-image' src='/images/issue.png'></image>
+            <view class='navigator-text' bindtap="addComment">发布影评</view>
+        </view>
+    </view>
+</view>
+

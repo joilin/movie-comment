@@ -1,0 +1,37 @@
+<!--pages/movieDetail/movieDetail.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view wx:if="{{!userInfo}}">
+    <view class="unlogin-card">
+        <view class="unlogin-head"></view>
+        <view class="unlogin-info">
+            <view class="unlogin-text">未登录</view>
+            <view class="unlogin-tips">点击微信登录后可添加影评</view>
+        </view>
+    </view>
+    <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+<view class='movieDetail' wx:else>
+<view class='description-card'>
+    <image class='movie-image' src='{{movie.image}}'></image>
+    <view class='movie-info'>
+        <view class='movie-name'>{{movie.title}}</view>
+        <scroll-view class='movie-description' scroll-y="true" >{{movie.description}}</scroll-view>
+    </view>
+    <view class='btn-area'>
+        <navigator class='navigator-btn' url='/pages/commentList/commentList?movieId={{movie.id}}'>
+            <image class='navigator-image' src='/images/eye.png'></image>
+            <view class='navigator-text'>查看影评</view>
+        </navigator>
+        <view class='navigator-btn' bindtap="actionSheetTap">
+            <image class='navigator-image' src='/images/edit.png'></image>
+            <view class='navigator-text'>添加影评</view>
+        </view>
+    </view>
+</view>
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+  <block wx:for="{{actionSheetItems}}" wx:key='actionId' >
+    <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>
+  </block>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>
+</view>

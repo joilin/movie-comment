@@ -1,0 +1,72 @@
+/* pages/movieList/movieList.wxss */
+
+.movie-list {
+    position: absolute;
+    top: 30rpx;
+    left: 40rpx;
+    width: 670rpx;
+    height: 86%;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.movie-card {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-bottom: 26rpx;
+    height: 322rpx;
+    background: #FFFFFF;
+    box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    margin-left: 40rpx;
+    width: 400rpx;
+    height: 150rpx;
+    box-sizing: border-box;
+}
+
+.movie-img {
+    flex-shrink: 0;
+    width: 230rpx;
+    height: 322rpx;
+}
+
+.movie-name {
+    font-size: 35rpx;
+    line-height: 49rpx;
+    color: rgba(29, 29, 38, 0.8);
+}
+
+.movie-category{
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: rgba(29, 29, 38, 0.8);
+}
+
+.btn-area{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    color: rgba(0, 0, 0, 0.5);
+    background: #FFFFFF;
+}
+
+.navigator-btn{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}

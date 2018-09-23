@@ -1,0 +1,49 @@
+<!--pages/user/user.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view wx:if="{{!userInfo}}">
+    <view class="unlogin-card">
+        <view class="unlogin-head"></view>
+        <view class="unlogin-info">
+            <view class="unlogin-text">未登录</view>
+            <view class="unlogin-tips">点击微信登录后可方便查看你的收藏影评</view>
+        </view>
+    </view>
+    <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+<view class='myComment' wx:else >
+    <view  class="title-wrapper">        
+            <view class="comment-item" wx:for="{{commentSort}}"  wx:key='id' wx:for-item='item'>
+                <view class="comment-name {{currentTab==index ? 'on' : ''}}" data-current='{{index}}' bindtap="swichNav">{{item.title}}</view>
+            </view>
+    </view>
+    <swiper class="comment-swiper" current="{{currentTab}}" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+        <swiper-item class="swiperItem" wx:for="{{allCommentList}}" wx:key='id' wx:for-item="oneCommentList">
+            <view class='noCommenttip' wx:if='{{!oneCommentList.commentList.length}}'>我还没有任何{{currentTab==0?'已收藏的':'已发布的'}}影评</view>
+            <scroll-view class='comment-list' scroll-y scroll-with-animation enable-back-to-top  wx:if='{{oneCommentList.commentList.length}}' >
+                <navigator class='comment-card' wx:for='{{oneCommentList.commentList}}' wx:for-item='item' wx:key='id' url='/pages/commentDetail/commentDetail?id={{item.id}}' >
+                    <image class="movie-img" src="{{item.image}}"></image> 
+                    <view class='comment-info'>
+                        <view class='movie-name'>{{item.title}}</view>  
+                        <view class='txt-content' wx:if="{{item.txtComment!=''}}">{{item.txtComment}}</view>
+                        <view class='audio-content' wx:else>
+                            <image class='play-icon' src='/images/play.png'></image>
+                            <view class='play-time'>{{item.time}}s</view>
+                        </view>
+                        <view class='comment-user'>
+                            <image class='comment-avatar' src='{{item.avatar}}'></image>
+                            <view class='comment-usename'>{{item.username}}</view>
+                        </view>
+                    </view>       
+                </navigator>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+
+    
+</view>
+<view class='btn-area'>
+    <navigator class='navigator-btn' url='/pages/home/home'>
+        <view class='navigator-text'>回到首页</view>
+    </navigator>
+</view>

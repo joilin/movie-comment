@@ -1,0 +1,99 @@
+/* pages/edit-comment/edit-comment.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
+.movie-image{
+    position: absolute;
+    top: 30rpx;
+    left: 250rpx;
+    width: 40%;
+    height: 350rpx;
+}
+.editComment{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin: 80rpx 40rpx 100rpx;
+    width: 89%;
+    height: 89%; 
+}
+.comment-card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color:white;
+}
+.movie-name{
+    margin-top: 320rpx;
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 40rpx;
+    line-height: 56rpx;
+    color:rgba(29,29,38,0.8);
+}
+.comment-info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50rpx;
+    width: 100%;
+    height: 45%;
+    justify-content:space-between;
+    align-items:center;
+}
+.comment-txt{
+    font-size:35rpx;
+    line-height:49rpx;
+    color: rgba(0, 0, 0, 0.5);
+    width: 80%;
+    height: 100%;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.comment-audio{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 150rpx;
+    padding-left: 40rpx;
+    padding-right: 40rpx;
+    border-style: groove;
+    border-width: thin;
+    border-color: beige;
+    border-radius: 5%;
+}
+.play-icon{
+    flex-shrink: 0;
+    width: 60rpx;
+    height: 60rpx;
+}
+.play-text{
+    margin-left: 10rpx;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.5);
+}
+.btn-area{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    color: rgba(0, 0, 0, 0.5);
+    background-color:limegreen;
+}
+
+.navigator-btn{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}

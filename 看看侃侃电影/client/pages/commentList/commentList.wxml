@@ -1,0 +1,24 @@
+<!--pages/commentList/commentList.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view class='noCommenttip' wx:if='{{!commentList.length}}'>还没有任何影评</view>
+<scroll-view class='comment-list' scroll-y scroll-with-animation enable-back-to-top wx:if='{{commentList.length}}'>
+    <view class='comment-card' wx:for='{{commentList}}' wx:for-item='item' wx:key='id' >
+        <view class='comment-user' bindtap='onTapCard' data-id="{{item.id}}">
+            <image class='comment-avatar' src='{{item.avatar}}'></image>
+            <view class='comment-usename'>{{item.username}}</view>
+        </view>
+        <view class='comment-content' bindtap='onTapCard' data-id="{{item.id}}">
+            <view class='txt-content' wx:if="{{item.txtComment}}">{{item.txtComment}}</view>
+            <view class='audio-content' wx:else>
+                <image class='play-icon' src='/images/play.png'></image>
+                <view class='play-time'>{{item.times}}s</view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class='btn-area'>
+    <navigator class='navigator-btn' url='/pages/home/home'>
+        <view class='navigator-text'>回到首页</view>
+    </navigator>
+</view>
+

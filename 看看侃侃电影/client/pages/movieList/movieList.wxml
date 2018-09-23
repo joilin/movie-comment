@@ -1,0 +1,19 @@
+<!--pages/movieList/movieList.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<scroll-view class='movie-list' scroll-y scroll-with-animation enable-back-to-top>
+    <navigator class='movie-card' wx:for='{{movieList}}' wx:for-item='item' wx:key='id' url='/pages/movieDetail/movieDetail?id={{item.id}}'>
+        <image class="movie-img" src="{{item.image}}"></image> 
+        <view class='movie-info'>
+            <view class='movie-name'>{{item.title}}</view>
+            <view class='movie-category'>{{item.category}}</view>                
+        </view>
+    </navigator>
+</scroll-view>
+<!--
+<view class='btn-area'>
+    <navigator class='navigator-btn' url='/pages/home/home'>
+        <view class='navigator-text'>回到首页</view>
+    </navigator>
+</view>
+-->
+

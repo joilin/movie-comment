@@ -1,0 +1,64 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wx565242268eb776fb",
+	"projectname": "%E7%9C%8B%E7%9C%8B%E4%BE%83%E4%BE%83%E7%94%B5%E5%BD%B1",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/moveDetail/moveDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "commentDetail",
+					"pathName": "pages/commentDetail/commentDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editComment",
+					"pathName": "pages/edit-comment/edit-comment",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "previewComment",
+					"pathName": "pages/preview-comment/preview-comment",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user"
+				}
+			]
+		}
+	}
+}

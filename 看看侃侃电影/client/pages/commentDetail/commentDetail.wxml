@@ -1,0 +1,49 @@
+<!--pages/commentDetail/commentDetail.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view wx:if="{{!userInfo}}">
+    <view class="unlogin-card">
+        <view class="unlogin-head"></view>
+        <view class="unlogin-info">
+            <view class="unlogin-text">未登录</view>
+            <view class="unlogin-tips">点击微信登录后可添加影评</view>
+        </view>
+    </view>
+    <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+<view class='commentDetail' wx:else>
+<view class='comment-card'>
+    <image class='movie-image' src='{{movie.image}}'></image>
+    <view class='comment-info'>
+        <view class='movie-name'>{{movie.title}}</view>
+        <view class='comment-user'>
+            <image class='comment-avatar' src='{{comment.avatar}}'></image>
+            <view class='comment-usename'>{{comment.username}}</view>
+        </view>
+        <view class='comment-content'>
+            <scroll-view class='txt-content' scroll-y="true" wx:if="{{comment.commentType=='文字'}}">{{comment.txtComment}}</scroll-view>
+            <view class='audio-content' wx:if="{{comment.commentType=='音频'}}">
+                <image class='play-icon' src='/images/play.png' bindtap='playRecord'></image>
+                <view class='play-time'>{{comment.times}}s</view>
+            </view>
+        </view>
+    </view>
+    <view class='btn-area'>
+        <view class='navigator-btn'bindtap="onCollectionTap">
+            <image wx:if='{{!collected}}' class='navigator-image' src='/images/collection.png'></image>
+            <image wx:else class='navigator-image' src='/images/collected.png'></image>
+            <view  wx:if='{{!collected}}' class='navigator-text'>收藏影评</view>
+            <view  wx:else class='navigator-text'>影评已收藏</view>
+        </view>
+        <view class='navigator-btn' bindtap="actionSheetTap">
+            <image class='navigator-image' src='/images/edit.png'></image>
+            <view class='navigator-text'>写影评</view>
+        </view>
+    </view>
+</view>
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+  <block wx:for="{{actionSheetItems}}" wx:key='actionId' >
+    <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>
+  </block>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>
+</view>

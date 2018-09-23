@@ -1,0 +1,22 @@
+<!--pages/home/home.wxml-->
+<image src='/images/bg.png' class='bg'></image>
+<view class='movie-card' wx:if='{{curCommentID != -1}}' bindtap='onTapMovie'>
+    <image class='movie-image' src='{{movie.image}}'  ></image>
+    <view class='movie-name'>{{movie.title}}</view>
+</view>
+<view class='comment-card' wx:if='{{curCommentID != -1}}' bindtap='onTapComment'>
+     <image class='comment-avatar' src='{{comment.avatar}}'></image>
+     <view class='comment-usename'>{{comment.username}}给你推荐了一部电影</view>
+</view>
+<view class='noCommenttip' wx:if='{{curCommentID==-1}}'> 还没有任何影评
+</view>
+<view class='btn-area'>
+    <navigator class='navigator-btn' url='/pages/movieList/movieList'>
+        <image class='navigator-image' src='/images/thumbsUp.png'></image>
+        <view class='navigator-text'>热门</view>
+    </navigator>
+    <navigator class='navigator-btn' url='/pages/user/user'>
+        <image class='navigator-image' src='/images/mine.png'></image>
+        <view class='navigator-text'>我的</view>
+    </navigator>
+</view>
