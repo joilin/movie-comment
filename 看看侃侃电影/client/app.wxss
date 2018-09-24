@@ -14,6 +14,7 @@
   height: 100%;
   z-index: -1;
 } 
+
 .unlogin-card {
   display: flex;
   align-items: center;
@@ -35,21 +36,18 @@
   flex: 1;
   margin-left: 31rpx;
 }
-
 .unlogin-text {
   line-height: 48rpx;
   font-size: 34rpx;
   color: rgba(29, 29, 38, 0.8);
   font-weight: bold;
 }
-
 .unlogin-tips {
   margin-top: 6rpx;
   line-height: 33rpx;
   font-size: 24rpx;
   color: #8B8B8B;
 }
-
 .unlogin-btn {
   margin: 34rpx auto 0;
   width: 250rpx;
@@ -64,7 +62,7 @@
   color: #34373D;
   font-weight: bold;
 }
-
 .unlogin-btn::after {
   border: none;
 }
+

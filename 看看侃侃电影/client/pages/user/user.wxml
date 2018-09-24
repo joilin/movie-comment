@@ -1,6 +1,6 @@
 <!--pages/user/user.wxml-->
 <image src='/images/bg.png' class='bg'></image>
-<view wx:if="{{!userInfo}}">
+<!--<view wx:if="{{!userInfo}}">
     <view class="unlogin-card">
         <view class="unlogin-head"></view>
         <view class="unlogin-info">
@@ -10,7 +10,8 @@
     </view>
     <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
 </view>
-<view class='myComment' wx:else >
+<view class='myComment' wx:else >-->
+<view class='myComment' >
     <view  class="title-wrapper">        
             <view class="comment-item" wx:for="{{commentSort}}"  wx:key='id' wx:for-item='item'>
                 <view class="comment-name {{currentTab==index ? 'on' : ''}}" data-current='{{index}}' bindtap="swichNav">{{item.title}}</view>

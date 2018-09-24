@@ -9,11 +9,4 @@
         </view>
     </navigator>
 </scroll-view>
-<!--
-<view class='btn-area'>
-    <navigator class='navigator-btn' url='/pages/home/home'>
-        <view class='navigator-text'>回到首页</view>
-    </navigator>
-</view>
--->
 

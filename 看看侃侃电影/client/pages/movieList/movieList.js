@@ -14,7 +14,7 @@ Page({
   /**
    * 获取热门电影列表
    */
-    GetMovieList(){
+    GetMovieList(cb){
         wx.showLoading({
             title: '热门电影数据加载中...',
         })
@@ -35,7 +35,6 @@ Page({
                     })
                 }
             },
-
             fail: result => {
                 wx.hideLoading()
 
@@ -43,6 +42,9 @@ Page({
                     icon: 'none',
                     title: '热门电影数据数据加载错误',
                 })
+            },
+            complete: () => {
+                cb && cb()
             }
         })
     },
@@ -55,51 +57,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+      this.GetMovieList(() => {
+          wx.stopPullDownRefresh()
+      })
   }
 })

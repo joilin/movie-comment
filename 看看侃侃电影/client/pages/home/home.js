@@ -1,12 +1,14 @@
 // pages/home/home.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
     data: {
+        userInfo: null,
         movie: {
             id: "",
             title: "",
@@ -46,6 +48,8 @@ Page({
                         this.setData({
                             curCommentID: -1
                         })
+                        // 获取随机电影详情数据
+                        this.GetRandomMovie()
                     } else {
                         //获取到随机影评数据
                         let movie = {
@@ -87,6 +91,47 @@ Page({
         })
     },
 
+ /**
+  * 获取随机电影详情数据
+  */
+    GetRandomMovie() {
+        wx.showLoading({
+            title: '随机电影详情数据加载中...',
+        })
+
+        qcloud.request({
+            url: config.service.movieDetail + -1, //将电影ID 设置成 -1 
+            success: result => {
+                wx.hideLoading()
+                console.log(result);
+
+                if (!result.data.code) {
+                    let movie = {
+                        id: result.data.data.id,
+                        title: result.data.data.title,
+                        image: result.data.data.image
+                    }
+                    this.setData({
+                        movie: movie
+                    })
+                } else {
+                    wx.showToast({
+                        icon: 'none',
+                        title: '随机电影详情数据加载失败'
+                    })
+                }
+            },
+            fail: () => {
+                wx.hideLoading()
+
+                wx.showToast({
+                    icon: 'none',
+                    title: '随机电影详情数据加载失败'
+                })
+            }
+        })
+    },
+
   /**
    * 点击海报图需跳转至电影详情页
    */
@@ -102,7 +147,7 @@ Page({
     onTapComment(e){
         wx.navigateTo({
             url: '/pages/commentDetail/commentDetail?id=' + this.data.comment.id,
-        })
+        })        
     },
 
   /**
@@ -112,52 +157,21 @@ Page({
         this.GetRandomComment()
     },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
+     /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
+        app.checkSession({
+            success: ({ userInfo }) => {
+                this.setData({
+                    userInfo: userInfo
+                })
+            },
+            error: () => {
+                wx.navigateTo({
+                    url: '/pages/login/login'
+                })
+             }
+        })
+    }
 })
